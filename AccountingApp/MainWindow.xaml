@@ -1,0 +1,45 @@
+﻿<Window x:Class="AccountingApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingApp"
+        mc:Ignorable="d"
+        Title="Contest Winner" Height="450" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open" Click="Open_Click"/>
+                    <MenuItem Header="_Save" Click="Save_Click"/>
+                    <MenuItem Header="_Print" Click="Print_Click"/>
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type RadioButton}">
+                    <Setter Property="Margin" Value="0,7,10,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <Label Content="Filter by type:"/>
+            <RadioButton Name="Rb_All" Content="All" IsChecked="True" Checked="RadioButton_Checked"/>
+            <RadioButton Name="Rb_AR" Content="Receivable" Checked="RadioButton_Checked"/>
+            <RadioButton Name="Rb_AP" Content="Payable" Checked="RadioButton_Checked"/>
+        </StackPanel>
+        <DataGrid Name="DataGrid" Grid.Row="2" HorizontalAlignment="Stretch" CanUserAddRows="false" IsReadOnly="True"
+                  CanUserReorderColumns="False" AutoGeneratingColumn="DataGrid_AutoGeneratingColumn" CanUserResizeColumns="False">
+        </DataGrid>
+        <Button Name="bt_Add" Content="Add entry" Grid.Row="3" Width="60" Height="20" HorizontalAlignment="Left" Margin="10,10,0,10" Click="bt_Add_Click"/>
+        <Button Name="bt_Remove" Content="Remove selected" Grid.Row="3" Width="100" Height="20" HorizontalAlignment="Left" Margin="80,10,0,10" Click="bt_Remove_Click" ToolTip="Remove selected entries"/>
+        <Button Name="bt_RemoveAll" Content="Remove all" Grid.Row="3" Width="70" Height="20" HorizontalAlignment="Left" Margin="190,10,0,10" Click="bt_Add_Click"/>
+    </Grid>
+</Window>
